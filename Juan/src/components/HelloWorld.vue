@@ -10,44 +10,55 @@
 
 
 
-    <div class="back_2" :style="{filter: 'blur('+blursize+'vw)',opacity: opacall}">
+    <div class="back_2" :style="{filter: 'blur('+blursize+'vmax)',opacity: opacall}">
 <!--    <embed src="../assets/demo3.mp3" autostart=true loop=true>-->
 <!--    <div ref="circleref1" :style="{top: styleObject}" class="centercircle">-->
 
 <!--      <div style=""></div>-->
   <!--    //音频控制-->
 
-      <div class="music" @click="music1">Music:On</div>
+      <div class="music" style="pointer-events: none" @click="music1">Music:On</div>
       <div class="musicname" @click="music1">ウォルピスカーター——《1%》</div>
 
       <div class="notes">
         Todo List<br>
         - 首页设计（20200401）√<br>
-        - 音乐播放器<br>
-        - 移动端适配<br>
-        - 作品展示页<br>
+        - 音乐播放器（进度：20%）<br>
+        - 移动端大小适配（20200402）√<br>
+        - 作品展示页（进度：10%）<br>
         - 自制hexo主题<br>
       </div>
+
       <div class="notestap"></div>
-<!--      <div class="notestap" style="left: 6vw;top: 20vw"></div>-->
+<!--      <div class="notestap" style="left: 6vmax;top: 20vmax"></div>-->
 
       <div class="beian">
         <a href="http://www.beian.gov.cn/">京ICP备19041410号-1</a>
         <div>© 2020 | Design By Juan</div>
       </div>
 
-      <div class="leftIntro">
-        <div class="cutoff" style="position: absolute;top:50%;left:20vw;width: 15vw;height: 1vw;background-color: #a6dadd"></div>
-        <div class="title1" style="">卷毛兔</div>
-        <div class="title2" style="">的个人网站</div>
-        <div class="title2" style="font-size: 0.5vw;margin-left: 7vw;margin-bottom: 0.5vw">建设中</div>
-        <div class="title3" style="">Juan.M.T.</div>
-        <div class="info1" style="">大三在读。软件工程专业。</div>
-        <div class="info2" style="">业余平面设计&视频制作。</div>
-
-
+      <div class="leftIntro" :style="{opacity: 1,transition:'opacity 1s ease'}">
+        <div class="cutoff" :style="{top: bottonchange2 +'%'}" style="transition:top 1s ease;position: absolute;top:50%;left:20vmax;width: 15vmax;height: 1vmax;background-color: #a6dadd"></div>
+        <div class="title1" :style="{bottom: bottonchange +'%'}">卷毛兔</div>
+        <div class="title2" :style="{bottom: bottonchange +'%'}" style="">的个人网站</div>
+        <div class="title2" :style="{bottom: bottonchange +'%'}" style="font-size: 8px;margin-left: 7vmax;margin-bottom: 0.8vmax">建设中</div>
+        <div class="title3" :style="{bottom: bottonchange +'%'}" style="">Juan.M.T.</div>
+        <div class="info1" :style="{bottom: bottonchange +'%'}" style="">大三在读。软件工程专业。</div>
+        <div class="info2" :style="{bottom: bottonchange +'%'}" style="">业余平面设计&视频制作。</div>
       </div>
-      <div ref="circleref1" class="centercircle" :style="{width: circlechange1+'vw',height: circlechange1+'vw',borderRadius: circlechange2+'vw'}">
+
+<!--      <div class="leftIntro2" :style="{opacity: 1,transition:'opacity 1s ease'}">-->
+<!--        <div class="cutoff" style="position: absolute;top:70%;left:20vmax;width: 15vmax;height: 1vmax;background-color: #a6dadd"></div>-->
+<!--        <div class="title1" style="">卷毛兔</div>-->
+<!--        <div class="title2" style="">的个人网站</div>-->
+<!--        <div class="title2" style="font-size: 0.5vmax;margin-left: 7vmax;margin-bottom: 0.5vmax">建设中</div>-->
+<!--        <div class="title3" style="">Juan.M.T.</div>-->
+<!--        <div class="info1" style="">大三在读。软件工程专业。</div>-->
+<!--        <div class="info2" style="">业余平面设计&视频制作。</div>-->
+<!--      </div>-->
+
+
+      <div ref="circleref1" class="centercircle" :style="{width: circlechange1+'vmax',height: circlechange1+'vmax',borderRadius: circlechange2+'vmax'}">
         <div  class="centercircle2" >
           <div  class="centercircle3" >
             <div ></div>
@@ -72,25 +83,25 @@
   <!--        <div class="css" style="">Html/CSS</div>-->
         </div>
       </div>
-      <div class="outer" name="nameouter"  :style="{ width : 32+activeWidth + 'vw', Height : 32+activeHeight + 'vw',transform: 'rotate('+ rotatecompute1 +'deg)'}" :class="{'outer_2': isChange == index_is}" >
-        <div class="circle_study"  @click="toIntro(index_is)" :style="style_1">
-          <div style="margin-left: -20%;font-size: 3vw">个人</div>
-          <div style="margin-top: -6%;margin-left: 15%;font-size: 2.5vw">简介</div>
+      <div class="outer" name="nameouter"  :style="{ width : 32+activeWidth + 'vmax', Height : 32+activeHeight + 'vmax',transform: 'rotate('+ rotatecompute1 +'deg)'}" :class="{'outer_2': isChange == index_is}" >
+        <div class="circle_study"  @click="clickinfo" :style="style_1">
+          <div style="margin-left: -20%;font-size: 3vmax">个人</div>
+          <div style="margin-top: -6%;margin-left: 15%;font-size: 2.5vmax">简介</div>
         </div>
       </div>
-      <div class="outer2" name="nameouter" :style="{ width : 32+activeWidth + 'vw', Height : 32+activeHeight + 'vw',transform: 'rotate('+rotatecompute2+'deg)'}">
+      <div class="outer2" name="nameouter" :style="{ width : 32+activeWidth + 'vmax', Height : 32+activeHeight + 'vmax',transform: 'rotate('+rotatecompute2+'deg)'}">
         <div class="circle_blog" @mouseenter="mouseOn1" @mouseleave="mouseLeave1" @click="toIntro(index_is)" :style="style_2" onclick="window.open('http://studynotes.juanmaotu.top/','_self')">
-          <div style="margin-left: -20%;font-size: 3vw">学习</div>
-          <div style="margin-top: -6%;margin-left: 15%;font-size: 2.5vw">记录 </div>
+          <div style="margin-left: -20%;font-size: 3vmax">学习</div>
+          <div style="margin-top: -6%;margin-left: 15%;font-size: 2.5vmax">记录 </div>
         </div>
       </div>
-      <div class="outer3" name="nameouter" :style="{ width : 32+activeWidth + 'vw', Height : 32+activeHeight + 'vw',transform: 'rotate('+rotatecompute3+'deg)'}" onclick="window.open('http://works.juanmaotu.top/','_self')">
+      <div class="outer3" name="nameouter" :style="{ width : 32+activeWidth + 'vmax', Height : 32+activeHeight + 'vmax',transform: 'rotate('+rotatecompute3+'deg)'}" onclick="window.open('http://works.juanmaotu.top/','_self')">
         <div class="circle_works" @mouseenter="mouseOn2" @mouseleave="mouseLeave2"  @click="toIntro(index_is)" :style="style_3">
-          <div style="margin-left: -20%;font-size: 3vw">作品</div>
-          <div style="margin-top: -6%;margin-left: 15%;font-size: 2.5vw">展示</div>
+          <div style="margin-left: -20%;font-size: 3vmax">作品</div>
+          <div style="margin-top: -6%;margin-left: 15%;font-size: 2.5vmax">展示</div>
         </div>
       </div>
-      <div class="outer4" name="nameouter" :style="{ width : 32+activeWidth + 'vw', Height : 32+activeHeight + 'vw',transform: 'rotate('+rotatecompute4+'deg)'}">
+      <div class="outer4" name="nameouter" :style="{ width : 32+activeWidth + 'vmax', Height : 32+activeHeight + 'vmax',transform: 'rotate('+rotatecompute4+'deg)'}">
         <div class="circle_other" @click="toIntro(index_is)" :style="style_4" onclick="window.open('https://space.bilibili.com/1898963/','_self')">other</div>
       </div>
   <!--    <video style="width: 0;height: 0;" id = "music2" src="../assets/demo3.mp3" autoplay="autoplay" loop="loop"></video>-->
@@ -129,10 +140,18 @@
         opacall:0.8,
         blursize:1,
         isMouseMove: false,
+          introopacity:1,
+          introopacity2:0,
+          bottonchange:50,
+          bottonchange2:50
 
       }
     },
-      // mounted() {
+      mounted() {
+          if(document.body.clientWidth/document.body.clientHeight < 1){
+              this.bottonchange=30;
+              this.bottonchange2=70;
+          }
       //     setTimeout(() => {
       //         window.L2Dwidget.init({
       //             pluginRootPath: 'live2dw/',
@@ -146,7 +165,17 @@
       //             log: false
       //         })
       //     }, 1000)
-      // },
+          const _this = this;
+          window.onresize = () => {
+              return(() =>{
+                      window.screenWidth = document.body.clientWidth;
+                      _this.screenWidth = window.screenWidth;
+                      window.screenHeight = document.body.clientHeight;
+                      _this.screenHeight = window.screenHeight;
+                  }
+              )()
+          }
+      },
       created () {
           // setTimeout(() => {
           //     window.L2Dwidget.init({
@@ -202,11 +231,27 @@
         }
     },
       methods:{
+        clickinfo(){
+              var iss = document.getElementsByClassName("leftIntro")[0];
+              // alert(iss.style.opacity);
+              if(iss.style.opacity == 0){
+                  iss.style.opacity = 1;
+              }
+              else{
+                  iss.style.opacity = 0;
+              }
+        },
         musicY(){
-            document.getElementsByClassName("musicchoose")[0].style.opacity = 0;
+
+            var N = document.getElementsByClassName("musicchooseN")[0];
+            var Y = document.getElementsByClassName("musicchooseY")[0];
+            N.style.opacity = 0;
+            N.style.pointerEvents = "none";
             // document.getElementsByClassName("musicchoose")[0].style.display = "none";
-            document.getElementsByClassName("musicchooseY")[0].style.opacity = 0;
-            document.getElementsByClassName("musicchooseN")[0].style.opacity = 0;
+            Y.style.opacity = 0;
+            Y.style.pointerEvents = "none";
+
+            document.getElementsByClassName("musicchoose")[0].style.opacity = 0;
 
             this.opacall = 1;
             this.blursize= 0;
@@ -222,6 +267,7 @@
             var musicIs2 = document.getElementById("music2");
 
             musicIs.innerHTML = "Music:On";
+            musicIs.style.pointerEvents = "auto";
             musicIs2.play();
 
             document.getElementsByClassName("centercircle3")[0].style.animationPlayState = "running";
@@ -247,6 +293,7 @@
             var musicIs = document.getElementsByClassName("music")[0];
             var musicIs2 = document.getElementById("music2");
 
+            musicIs.style.pointerEvents = "auto";
             musicIs.innerHTML = "Music:Off";
             musicIs2.pause();
         },
@@ -293,8 +340,8 @@
               // alert("on");
               var more = document.getElementsByClassName("studymore")[0];
               more.style.opacity = 1;
-              more.style.marginLeft = '-2vw';
-              more.style.marginRight = '-14vw';
+              more.style.marginLeft = '-2vmax';
+              more.style.marginRight = '-14vmax';
               more.style.transition = "opacity 0.5s ease,margin 0.5s ease";
 
               var js = document.getElementsByClassName("js")[0];
@@ -303,10 +350,10 @@
               var vue = document.getElementsByClassName("vue")[0];
               var css = document.getElementsByClassName("css")[0];
 
-              vue.style.marginLeft = '12.5vw';
-              ps.style.marginLeft = '12.5vw';
-              css.style.marginLeft = '-1.5vw';
-              js.style.marginLeft = '-2vw';
+              vue.style.marginLeft = '12.5vmax';
+              ps.style.marginLeft = '12.5vmax';
+              css.style.marginLeft = '-1.5vmax';
+              js.style.marginLeft = '-2vmax';
               // css.style.transition = "margin 0.5s ease";
 
           },
@@ -320,22 +367,22 @@
               var css = document.getElementsByClassName("css")[0];
 
               more.style.opacity = 0;
-              more.style.marginLeft = '0vw';
-              ps.style.marginLeft = '12vw';
-              more.style.marginRight = '-12vw';
+              more.style.marginLeft = '0vmax';
+              ps.style.marginLeft = '12vmax';
+              more.style.marginRight = '-12vmax';
               more.style.transition = "opacity 0.5s ease,margin 0.5s ease";
 
-              vue.style.marginLeft = '13vw';
-              css.style.marginLeft = '0vw';
-              js.style.marginLeft = '0vw';
+              vue.style.marginLeft = '13vmax';
+              css.style.marginLeft = '0vmax';
+              js.style.marginLeft = '0vmax';
 
           },
         mouseOn2(){
               // alert("on");
               var more = document.getElementsByClassName("worksmore")[0];
               more.style.opacity = 1;
-              // more.style.marginLeft = '-2vw';
-              more.style.marginRight = '-18vw';
+              // more.style.marginLeft = '-2vmax';
+              more.style.marginRight = '-18vmax';
               more.style.transition = "opacity 0.5s ease,margin 0.5s ease";
 
               var pv = document.getElementsByClassName("pv")[0];
@@ -344,10 +391,10 @@
               var mus = document.getElementsByClassName("mus")[0];
               // var css = document.getElementsByClassName("css")[0];
 
-              pv.style.marginLeft = '9vw';
-              web.style.marginLeft = '-5vw';
-              post.style.marginLeft = '1vw';
-              mus.style.marginLeft = '-10vw';
+              pv.style.marginLeft = '9vmax';
+              web.style.marginLeft = '-5vmax';
+              post.style.marginLeft = '1vmax';
+              mus.style.marginLeft = '-10vmax';
               // css.style.transition = "margin 0.5s ease";
 
           },
@@ -355,8 +402,8 @@
               // alert("on");
             var more = document.getElementsByClassName("worksmore")[0];
             more.style.opacity = 0;
-            // more.style.marginLeft = '-2vw';
-            more.style.marginRight = '-16vw';
+            // more.style.marginLeft = '-2vmax';
+            more.style.marginRight = '-16vmax';
             more.style.transition = "opacity 0.5s ease,margin 0.5s ease";
 
             var pv = document.getElementsByClassName("pv")[0];
@@ -365,10 +412,10 @@
             var mus = document.getElementsByClassName("mus")[0];
             // var css = document.getElementsByClassName("css")[0];
 
-            pv.style.marginLeft = '10vw';
-            web.style.marginLeft = '-4vw';
-            post.style.marginLeft = '0vw';
-            mus.style.marginLeft = '-11vw';
+            pv.style.marginLeft = '10vmax';
+            web.style.marginLeft = '-4vmax';
+            post.style.marginLeft = '0vmax';
+            mus.style.marginLeft = '-11vmax';
 
           },
         music1(){
@@ -402,37 +449,48 @@
         }
       },
     watch:{
-          // screenWidth(val){
-          //     // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
-          //     if(!this.timer){
-          //         // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
-          //         this.screenWidth = val
-          //         this.timer = true
-          //         let that = this
-          //         setTimeout(function(){
-          //             // 打印screenWidth变化的值
-          //             console.log(that.screenWidth+'Width')
-          //             that.timer = false
-          //         },400)
-          //     }
-          // },
-        windowsize(val){
-            // console.log(val);
+          screenWidth(val){
               // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
               if(!this.timer){
                   // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
-                  this.screenWidth = val.screenWidth
-                  this.screenHeight = val.screenHeight
-                  this.timer = true
-                  let that = this
+                  this.screenWidth = val;
+                  this.timer = true;
+                  let that = this;
                   setTimeout(function(){
                       // 打印screenWidth变化的值
-                      console.log(that.screenWidth+'Width')
-                      console.log(that.screenHeight+'Height')
+                      console.log(that.screenWidth+'Width');
+                      if(that.screenWidth/that.screenHeight <= 1){
+                        // document.getElementsByClassName("leftIntro")[0].style.opacity = 0;
+                          that.bottonchange = 30;
+                          that.bottonchange2 = 70;
+                      }
+                      else{
+                          // document.getElementsByClassName("leftIntro")[0].style.opacity = 1;                          that.bottonchange = 30;
+                          that.bottonchange = 50;
+                          that.bottonchange2 = 50;
+                      }
                       that.timer = false
                   },400)
               }
           },
+
+        // windowsize(val){
+        //     // console.log(val);
+        //       // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
+        //       if(!this.timer){
+        //           // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
+        //           this.screenWidth = val.screenWidth;
+        //           this.screenHeight = val.screenHeight;
+        //           this.timer = true;
+        //           let that = this;
+        //           setTimeout(function(){
+        //               // 打印screenWidth变化的值
+        //               console.log(that.screenWidth+'Width');
+        //               console.log(that.screenHeight+'Height');
+        //               that.timer = false
+        //           },400)
+        //       }
+        //   },
       }
   }
 
@@ -445,14 +503,14 @@
   }
 
   @keyframes circle1 {
-    0%{width: 0vw;height: 0vw;border-radius: 0vw}
-    100%{width: 20vw;height: 20vw;border-radius: 10vw}
+    0%{width: 0vmax;height: 0vmax;border-radius: 0vmax}
+    100%{width: 20vmax;height: 20vmax;border-radius: 10vmax}
   }
   @keyframes testt
    {
-     0% {width: 0vw;height: 0vw;border-radius: 0vw}
+     0% {width: 0vmax;height: 0vmax;border-radius: 0vmax}
      /*50% {transform: rotate(180deg);}*/
-     100% {width: 7.6vw;height: 7.6vw;border-radius: 3.8vw}
+     100% {width: 7.6vmax;height: 7.6vmax;border-radius: 3.8vmax}
    }
 
   @keyframes rotate_start {
@@ -500,12 +558,12 @@
     100% {opacity: 100%}
   }
   @keyframes leftbar {
-    0%{width: 0vw}
-    100%{width: 15vw}
+    0%{width: 0vmax}
+    100%{width: 15vmax}
   }
   @keyframes choosebox {
-    0%{width: 0vw;color: rgba(128, 128, 128, 0)}
-    50%{width: 20vw;color: rgba(128, 128, 128, 0)}
+    0%{width: 0vmax;color: rgba(128, 128, 128, 0)}
+    50%{width: 20vmax;color: rgba(128, 128, 128, 0)}
     100%{color: grey}
   }
 
@@ -525,23 +583,23 @@
     background-color: white;
     text-align: left;
 
-    padding-left: 2vw;
-    padding-top: 1vw;
-    padding-bottom: 1vw;
+    padding-left: 2vmax;
+    padding-top: 1vmax;
+    padding-bottom: 1vmax;
     font-family: "Source Han Serif SC";
-    font-size: 0.5vw;
+    font-size: 0.5vmax;
     letter-spacing: 1px;
     font-weight: normal;
 
-    line-height: 2vw;
+    line-height: 2vmax;
     vertical-align: center;
 
     position: absolute;
-    left: 5vw;
-    top:5vw;
-    border-radius: 0.5vw;
-    width: 15vw;
-    /*height: 3vw;*/
+    left: 5vmax;
+    top:5vmax;
+    border-radius: 0.5vmax;
+    width: 15vmax;
+    /*height: 3vmax;*/
     box-shadow: 3px 3px 10px #ececec;;
   }
 
@@ -556,11 +614,11 @@
     letter-spacing: 1px;
     font-weight: normal;
     position: absolute;
-    left: 12vw;
-    top:6vw;
-    /*border-radius: 0.5vw;*/
-    width: 12vw;
-    height: 1vw;
+    left: 12vmax;
+    top:6vmax;
+    /*border-radius: 0.5vmax;*/
+    width: 12vmax;
+    height: 1vmax;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
   }
 
@@ -568,17 +626,17 @@
     color: #a6dadd;
     text-align: right;
     font-family: "Source Han Serif SC";
-    font-size: 0.8vw;
+    font-size: 0.8vmax;
     letter-spacing: 1px;
     font-weight: bold;
-    line-height: 3vw;
+    line-height: 3vmax;
     vertical-align: center;
     position: absolute;
-    right: 1.5vw;
-    top:4.5vw;
-    border-radius: 0.5vw;
-    width: 25vw;
-    height: 3vw;
+    right: 1.5vmax;
+    top:4.5vmax;
+    border-radius: 0.5vmax;
+    width: 25vmax;
+    height: 3vmax;
     /*background-color: #c5c5c5;*/
     /*box-shadow: 5px 5px 6px #ececec;*/
   }
@@ -587,15 +645,15 @@
     margin: auto;
     position: absolute;
     left:0; right:0; top:0; bottom:0;
-    height: 5vw;width: 20vw;
-    border-radius: 3vw;
-    line-height: 5vw;
+    height: 5vmax;width: 20vmax;
+    border-radius: 3vmax;
+    line-height: 5vmax;
     vertical-align: center;
     color: grey;
     background-color: white;
     font-family: "Source Han Serif SC";
     font-weight: normal;
-    font-size: 1.5vw;
+    font-size: 1.5vmax;
     box-shadow: 3px 3px 10px rgba(56, 56, 56, 0.21);
     transition: color 0.2s ease,background-color 0.2s ease,opacity 1s ease;
     letter-spacing: 1px;
@@ -603,16 +661,16 @@
   }
   .musicchooseY{
     animation: chooseboxY 1s ease;
-    width: 4vw;
-    height: 4vw;
-    line-height: 4vw;
+    width: 4vmax;
+    height: 4vmax;
+    line-height: 4vmax;
     margin-left: 34vw;
   }
   .musicchooseN{
     animation: chooseboxY 1s ease;
-    width: 4vw;
-    height: 4vw;
-    line-height: 4vw;
+    width: 4vmax;
+    height: 4vmax;
+    line-height: 4vmax;
     margin-right: 34vw;
   }
   .musicchooseY:hover{
@@ -630,51 +688,52 @@
   .title1,.title2,.title3,.info1,.info2{
 
     font-family: "Source Han Serif SC";
-    font-size: 1.2vw;
+    font-size: 1.2vmax;
     position: absolute;
     bottom:50%;
-    left:20vw;
-    width: 15vw;
-    height: 1vw;
+    left:20vmax;
+    width: 15vmax;
+    height: 1vmax;
     color: black;
-    margin-left:3vw ;
+    margin-left:3vmax ;
     animation: rotate1 2s ease;
+    transition: bottom 1s ease;
 
   }
   .cutoff{
     animation: leftbar 2s ease;
   }
   .title1{
-    font-size: 2vw;
+    font-size: 2vmax;
     font-weight: bold;
-    margin-left:-3.5vw ;
-    margin-bottom: 0.9vw;
+    margin-left:-3.5vmax ;
+    margin-bottom: 0.9vmax;
 
     /*font-style: oblique;*/
   }
   .title3{
-    margin-left:-10.5vw;
+    margin-left:-10.5vmax;
     color: #a6dadd;
-    margin-bottom: -0.5vw;
+    margin-bottom: -0.5vmax;
   }
   .info1{
-    font-size: 1vw;
+    font-size: 1vmax;
     font-weight: initial;
-    letter-spacing: 0.1vw;
-    width: 20vw;
-    margin-bottom: -3.5vw;
-    margin-left:-5vw;
+    letter-spacing: 0.1vmax;
+    width: 20vmax;
+    margin-bottom: -3.5vmax;
+    margin-left:-5vmax;
     animation: info-1 3s ease;
 
   }
   .info2{
-    font-size: 1vw;
+    font-size: 1vmax;
     font-weight: initial;
-    letter-spacing: 0.1vw;
+    letter-spacing: 0.1vmax;
 
-    width: 20vw;
-    margin-bottom: -6vw;
-    margin-left:-3vw;
+    width: 20vmax;
+    margin-bottom: -6vmax;
+    margin-left:-3vmax;
     animation: info-1 3s ease;
 
   }
@@ -696,103 +755,103 @@
     transition: margin 0.5s ease;
   }
   .vue{
-    margin-left: 13vw;
-    margin-top: -2vw;
+    margin-left: 13vmax;
+    margin-top: -2vmax;
   }
   .ae{
-    margin-top: -1.6vw;
-    margin-left: -6vw;
-    font-size: 2.5vw;
+    margin-top: -1.6vmax;
+    margin-left: -6vmax;
+    font-size: 2.5vmax;
     transition: margin 0.5s ease;
   }
   .ps{
-    font-size: 1vw;
-    margin-left: 12.3vw;
-    margin-top: -2vw;
+    font-size: 1vmax;
+    margin-left: 12.3vmax;
+    margin-top: -2vmax;
     transition: margin 0.5s ease;
   }
   .css{
-    font-size: 2.8vw;
-    margin-top: -0.6vw;
+    font-size: 2.8vmax;
+    margin-top: -0.6vmax;
     transition: margin 0.5s ease;
   }
 
 
   .pv{
-    margin-left: 10vw;
-    margin-top: 0vw;
-    font-size: 1.8vw;
+    margin-left: 10vmax;
+    margin-top: 0vmax;
+    font-size: 1.8vmax;
     transition: margin 0.5s ease;
 
   }
   .web{
-    margin-top: -2.5vw;
-    margin-left: -4vw;
-    font-size: 1.8vw;
+    margin-top: -2.5vmax;
+    margin-left: -4vmax;
+    font-size: 1.8vmax;
     transition: margin 0.5s ease;
   }
   .post{
     color:white;-webkit-text-stroke: 1px #a6dadd;
-    font-size: 2.5vw;
-    margin-left: 0vw;
-    margin-top: -0.5vw;
+    font-size: 2.5vmax;
+    margin-left: 0vmax;
+    margin-top: -0.5vmax;
     transition: margin 0.5s ease;
   }
   .mus{
     color:white;-webkit-text-stroke: 1px #a6dadd;
-    font-size: 2.8vw;
-    margin-top: -9vw;
-    margin-left: -10vw;
+    font-size: 2.8vmax;
+    margin-top: -9vmax;
+    margin-left: -10vmax;
     transition: margin 0.5s ease;
   }
 
 
   .studymore{
     pointer-events: auto;
-    width: 15vw;
-    height: 10vw;
+    width: 15vmax;
+    height: 10vmax;
     color: #a6dadd;
     /*background-color: #a6dadd;*/
     position: relative;
     float: right;
     font-family: "Source Han Serif SC";
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 2vmax;
     opacity: 0;
-    margin-top: 5vw;
-    margin-right: -12vw;
+    margin-top: 5vmax;
+    margin-right: -12vmax;
   }
 
   .worksmore{
     pointer-events: auto;
-    width: 20vw;
-    height: 10vw;
+    width: 20vmax;
+    height: 10vmax;
     color: #a6dadd;
     /*background-color: #a6dadd;*/
     position: relative;
     float: right;
     font-family: "Source Han Serif SC";
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 2vmax;
     opacity: 0;
-    margin-top: 15vw;
-    margin-right: -16vw;
+    margin-top: 15vmax;
+    margin-right: -16vmax;
   }
 
   .music{
     color: white;
     font-family: "Source Han Serif SC";
-    font-size: 0.8vw;
+    font-size: 0.8vmax;
     letter-spacing: 1px;
     font-weight: bold;
-    line-height: 3vw;
+    line-height: 3vmax;
     vertical-align: center;
     position: absolute;
-    right: 1.5vw;
-    top:1.5vw;
-    border-radius: 0.5vw;
-    width: 7vw;
-    height: 3vw;
+    right: 1.5vmax;
+    top:1.5vmax;
+    border-radius: 0.5vmax;
+    width: 7vmax;
+    height: 3vmax;
     background-color: #c5c5c5;
     box-shadow: 5px 5px 6px #ececec;
   }
@@ -808,8 +867,8 @@
   .outer_2{
     /*background-color: red;*/
     pointer-events: none;
-    width: 32vw;
-    height: 32vw;
+    width: 32vmax;
+    height: 32vmax;
     text-align: center;
     transform: rotate(45deg);
     position: absolute;
@@ -822,9 +881,9 @@
 
   .outer,.outer2,.outer3,.outer4,.outer5,.outer6{
     pointer-events: none;
-    width: 32vw;
-    height: 32vw;
-    /*border-radius: 10vw;*/
+    width: 32vmax;
+    height: 32vmax;
+    /*border-radius: 10vmax;*/
     /*background: #a6dadd;*/
     /*color: #eaffb3;*/
     /*margin: auto;*/
@@ -832,8 +891,8 @@
     /*transform: rotate(45deg);*/
     position: absolute;
     left:50%; top:50%;
-    margin-left: -16%;
-    margin-top: -16%;
+    margin-left: -16vmax;
+    margin-top: -16vmax;
     /*animation: rotate_start 2s 1 ease;*/
     /*animation: rotate1 2s linear;*/
     /*animation: testt 5s infinite linear;*/
@@ -862,8 +921,8 @@
   .outer5{
     transform: rotate(0deg);
     /*background-color: #ec0400;*/
-    width: 44vw;
-    height: 44vw;
+    width: 44vmax;
+    height: 44vmax;
     margin-left: -22%;
     margin-top: -22%;
     /*animation: rotate4 30s infinite linear;*/
@@ -871,8 +930,8 @@
   .outer6{
     transform: rotate(0deg);
     /*background-color: #ececec;*/
-    width: 44vw;
-    height: 44vw;
+    width: 44vmax;
+    height: 44vmax;
     margin-left: -22%;
     margin-top: -22%;
     /*animation: rotate4 30s infinite linear;*/
@@ -883,10 +942,10 @@
     font-family: "Source Han Serif SC";
     font-weight: bold;
     pointer-events: none;
-    width: 7.6vw;
-    height: 7.6vw;
+    width: 7.6vmax;
+    height: 7.6vmax;
     background: #808080;
-    border-radius: 3.8vw;
+    border-radius: 3.8vmax;
     margin: 0 auto;
     float: left;
 
@@ -909,7 +968,7 @@
     /*animation-delay: 0.5s;*/
   }
   .circle_other{
-    line-height: 7.6vw;
+    line-height: 7.6vmax;
     vertical-align: center;
     /*animation-delay: 0.25s;*/
   }
@@ -954,8 +1013,8 @@
   /*}*/
   .centercircle{
     width: 20%;
-    height: 20vw;
-    border-radius: 10vw;
+    height: 20vmax;
+    border-radius: 10vmax;
     background: #a6dadd;
     color: white;
     margin: auto;
@@ -971,8 +1030,8 @@
 
   /*.centercircle:hover{*/
   /*  width: 22%;*/
-  /*  height: 22vw;*/
-  /*  border-radius: 11vw;*/
+  /*  height: 22vmax;*/
+  /*  border-radius: 11vmax;*/
 
   /*}*/
 
@@ -1007,7 +1066,7 @@
     position: relative;
     top: 2%;
     background-image: url("../assets/20180317105848_IMG_4658-01.jpg");
-    background-size: 22vw 22vw;
+    background-size: 22vmax 22vmax;
 
     animation: centerrotate 30s infinite linear;
     animation-play-state: paused;
