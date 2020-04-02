@@ -4,8 +4,11 @@
 
 
     <div class="musicchoose" style="z-index: 100"> 是否播放BGM？ </div>
+
     <div class="musicchooseY" style="z-index: 100" @click="musicY"> 是 </div>
     <div class="musicchooseN" style="z-index: 100" @click="musicN"> 否 </div>
+
+
 
     <div class="back_2" :style="{filter: 'blur('+blursize+'vw)',opacity: opacall}">
 <!--    <embed src="../assets/demo3.mp3" autostart=true loop=true>-->
@@ -13,7 +16,20 @@
 
 <!--      <div style=""></div>-->
   <!--    //音频控制-->
+
       <div class="music" @click="music1">Music:On</div>
+      <div class="musicname" @click="music1">ウォルピスカーター——《1%》</div>
+
+      <div class="notes">
+        Todo List<br>
+        - 首页设计（20200401）√<br>
+        - 音乐播放器<br>
+        - 移动端适配<br>
+        - 作品展示页<br>
+        - 自制hexo主题<br>
+      </div>
+      <div class="notestap"></div>
+<!--      <div class="notestap" style="left: 6vw;top: 20vw"></div>-->
 
       <div class="beian">
         <a href="http://www.beian.gov.cn/">京ICP备19041410号-1</a>
@@ -75,11 +91,12 @@
         </div>
       </div>
       <div class="outer4" name="nameouter" :style="{ width : 32+activeWidth + 'vw', Height : 32+activeHeight + 'vw',transform: 'rotate('+rotatecompute4+'deg)'}">
-        <div class="circle_other" @click="toIntro(index_is)" :style="style_4">other</div>
+        <div class="circle_other" @click="toIntro(index_is)" :style="style_4" onclick="window.open('https://space.bilibili.com/1898963/','_self')">other</div>
       </div>
   <!--    <video style="width: 0;height: 0;" id = "music2" src="../assets/demo3.mp3" autoplay="autoplay" loop="loop"></video>-->
-      <audio id = "music2" loop="loop">
+      <audio id = "music2" loop>
         <source src="../assets/bgm2.mp3" type="audio/mpeg">
+<!--        <source src="../assets/demo3.mp3" type="audio/mpeg">-->
         您的浏览器不支持 audio 元素。
       </audio>
     </div>
@@ -207,6 +224,7 @@
             musicIs.innerHTML = "Music:On";
             musicIs2.play();
 
+            document.getElementsByClassName("centercircle3")[0].style.animationPlayState = "running";
 
 
         },
@@ -244,14 +262,24 @@
           // console.log(e.clientX+"+"+document.body.clientWidth);
           var changewidth = e.clientX/document.body.clientWidth;
           // console.log(changewidth);
-          this.activeWidth = changewidth*2;
-          this.activeHeight = changewidth*2;
+           //缓动
+            var pi = Math.PI;
+            var iss2 = Math.cos(pi*changewidth/2);
 
-          this.circlechange1 = 20 + changewidth*3;
-          this.circlechange2 = 10 + changewidth*3;
-          // var changeheight = e.clientY/document.body.clientHeight;
-          var iss = changewidth-0.5;
 
+         // 改离圆心距离
+          this.activeWidth = -iss2*2;
+          this.activeHeight = -iss2*2;
+
+
+
+            //改中间圆的大小
+          // this.circlechange1 = 20 + changewidth*3;
+          // this.circlechange2 = 10 + changewidth*3;
+
+          //  改旋转角度
+          // var iss = changewidth-0.5;
+            // // var changeheight = e.clientY/document.body.clientHeight;
           // this.rotatecompute1 = 45+iss*15;
           // this.rotatecompute2 = 90+iss*15;
           // this.rotatecompute3 = 135+iss*15;
@@ -352,11 +380,15 @@
 
                 musicIs2.pause();
                 musicIs.innerHTML = "Music:Off";
+                document.getElementsByClassName("centercircle3")[0].style.animationPlayState = "paused";
+
             }else{
                 // alert(musicIs.innerHTML);
 
                 musicIs2.play();
-                musicIs.innerHTML = "Music:On"
+                musicIs.innerHTML = "Music:On";
+                document.getElementsByClassName("centercircle3")[0].style.animationPlayState = "running";
+
             }
             // $("div.music").innerHTML = 'Music:Off';
         },
@@ -483,6 +515,73 @@
     100%{color: grey}
   }
 
+  @keyframes centerrotate {
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(360deg)}
+  }
+
+  .notes{
+    color: #808080;
+    background-color: white;
+    text-align: left;
+
+    padding-left: 2vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    font-family: "Source Han Serif SC";
+    font-size: 0.5vw;
+    letter-spacing: 1px;
+    font-weight: normal;
+
+    line-height: 2vw;
+    vertical-align: center;
+
+    position: absolute;
+    left: 5vw;
+    top:5vw;
+    border-radius: 0.5vw;
+    width: 15vw;
+    /*height: 3vw;*/
+    box-shadow: 3px 3px 10px #ececec;;
+  }
+
+  .notestap{
+    background-color: #a6dadd;
+    opacity: 0.5;
+    text-align: left;
+
+    /*z-index: 100;*/
+    transform: rotate(30deg);
+
+    letter-spacing: 1px;
+    font-weight: normal;
+    position: absolute;
+    left: 12vw;
+    top:6vw;
+    /*border-radius: 0.5vw;*/
+    width: 12vw;
+    height: 1vw;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .musicname{
+    color: #a6dadd;
+    text-align: right;
+    font-family: "Source Han Serif SC";
+    font-size: 0.8vw;
+    letter-spacing: 1px;
+    font-weight: bold;
+    line-height: 3vw;
+    vertical-align: center;
+    position: absolute;
+    right: 1.5vw;
+    top:4.5vw;
+    border-radius: 0.5vw;
+    width: 25vw;
+    height: 3vw;
+    /*background-color: #c5c5c5;*/
+    /*box-shadow: 5px 5px 6px #ececec;*/
+  }
   .musicchoose,.musicchooseY,.musicchooseN{
     animation: choosebox 1.5s ease;
     margin: auto;
@@ -909,6 +1008,9 @@
     top: 2%;
     background-image: url("../assets/20180317105848_IMG_4658-01.jpg");
     background-size: 22vw 22vw;
+
+    animation: centerrotate 30s infinite linear;
+    animation-play-state: paused;
   }
 
   .back_1 {
